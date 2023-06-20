@@ -33,12 +33,16 @@ public class FlattenAList {
     }
 
     static Node flatten(Node root) {
-        if (root == null || root.next == null) {
-            return root;
+        Node prev = null;
+        Node curr = root;
+        while (curr != null) {
+            Node next = curr.next;
+            prev = merge(prev, curr);
+            prev.next = null;
+            curr.next = null;
+            curr = next;
         }
-        root.next = flatten(root.next);
-        root = merge(root, root.next);
-        return root;
+        return prev;
     }
 
     static void print(Node root) {
