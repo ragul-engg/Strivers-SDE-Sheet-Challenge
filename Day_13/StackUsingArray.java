@@ -1,6 +1,3 @@
-import java.util.*;
-import java.io.*;
-
 class Stack {
     int[] stack;
     int top;
