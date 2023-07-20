@@ -1,20 +1,11 @@
 package linked_list_ii;
 
-class Node {
-    int data;
-    Node next;
-    Node bottom;
-
-    Node(int data) {
-        this.data = data;
-        next = bottom = null;
-    }
-}
+import utils.ListNode;
 
 public class FlattenAList {
-    static Node merge(Node head1, Node head2) {
-        Node dummy = new Node(-1);
-        Node tail = dummy;
+    static ListNode merge(ListNode head1, ListNode head2) {
+        ListNode dummy = new ListNode(-1);
+        ListNode tail = dummy;
         while (head1 != null && head2 != null) {
             if (head1.data <= head2.data) {
                 tail.bottom = head1;
@@ -34,11 +25,11 @@ public class FlattenAList {
         return dummy.bottom;
     }
 
-    static Node flatten(Node root) {
-        Node prev = null;
-        Node curr = root;
+    static ListNode flatten(ListNode root) {
+        ListNode prev = null;
+        ListNode curr = root;
         while (curr != null) {
-            Node next = curr.next;
+            ListNode next = curr.next;
             prev = merge(prev, curr);
             prev.next = null;
             curr.next = null;
@@ -47,8 +38,8 @@ public class FlattenAList {
         return prev;
     }
 
-    static void print(Node root) {
-        Node curr = root;
+    static void print(ListNode root) {
+        ListNode curr = root;
         while (curr != null) {
             System.out.print(curr.data + " ");
             curr = curr.bottom;
@@ -56,15 +47,15 @@ public class FlattenAList {
     }
 
     public static void main(String[] args) {
-        Node root = new Node(5);
-        root.bottom = new Node(7);
-        root.bottom.bottom = new Node(8);
-        root.bottom.bottom.bottom = new Node(30);
-        root.next = new Node(10);
-        root.next.next = new Node(19);
-        root.next.next.bottom = new Node(22);
-        root.next.next.bottom.bottom = new Node(50);
-        root.next.next.next = new Node(28);
+        ListNode root = new ListNode(5);
+        root.bottom = new ListNode(7);
+        root.bottom.bottom = new ListNode(8);
+        root.bottom.bottom.bottom = new ListNode(30);
+        root.next = new ListNode(10);
+        root.next.next = new ListNode(19);
+        root.next.next.bottom = new ListNode(22);
+        root.next.next.bottom.bottom = new ListNode(50);
+        root.next.next.next = new ListNode(28);
         root = flatten(root);
         print(root);
     }

@@ -1,28 +1,32 @@
+package linked_list_ii;
+
+import utils.ListNode;
+
 public class ReverseNodesKGroup {
-    static Node head = null;
+    static ListNode head = null;
 
     private static void insert(int data) {
         if (head == null) {
-            head = new Node(data);
+            head = new ListNode(data);
         } else {
-            Node curr = head;
+            ListNode curr = head;
             while (curr.next != null) {
                 curr = curr.next;
             }
-            curr.next = new Node(data);
+            curr.next = new ListNode(data);
         }
     }
 
-    public static Node reverseKGroup(Node head, int k) {
+    public static ListNode reverseKGroup(ListNode head, int k) {
         if (head == null || head.next == null) {
             return head;
         }
-        Node dummyNode = new Node(0);
+        ListNode dummyNode = new ListNode(0);
         dummyNode.next = head;
         int length = findLengthLL(head);
-        Node prev = dummyNode;
-        Node curr;
-        Node next;
+        ListNode prev = dummyNode;
+        ListNode curr;
+        ListNode next;
         while (length >= k) {
             curr = prev.next;
             next = curr.next;
@@ -38,9 +42,9 @@ public class ReverseNodesKGroup {
         return dummyNode.next;
     }
 
-    private static int findLengthLL(Node head) {
+    private static int findLengthLL(ListNode head) {
         int len = 0;
-        Node curr = head;
+        ListNode curr = head;
         while (curr != null) {
             curr = curr.next;
             len++;
@@ -48,8 +52,8 @@ public class ReverseNodesKGroup {
         return len;
     }
 
-    private static void printList(Node head) {
-        Node curr = head;
+    private static void printList(ListNode head) {
+        ListNode curr = head;
         while (curr != null) {
             System.out.print(curr.data);
             if (curr.next != null) {

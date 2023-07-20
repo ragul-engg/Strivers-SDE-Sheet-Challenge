@@ -1,10 +1,14 @@
+package linked_list_ii;
+
+import utils.ListNode;
+
 public class LinkedListCycleII {
-    public static Node firstNode(Node head) {
+    public static ListNode firstNode(ListNode head) {
         if (head == null || head.next == null) {
             return null;
         }
-        Node fast = head;
-        Node slow = head;
+        ListNode fast = head;
+        ListNode slow = head;
         do {
             slow = slow.next;
             fast = fast.next.next;
@@ -21,10 +25,10 @@ public class LinkedListCycleII {
     }
 
     public static void main(String[] args) {
-        Node root = new Node(3);
-        root.next = new Node(2);
-        root.next.next = new Node(0);
-        root.next.next.next = new Node(4);
+        ListNode root = new ListNode(3);
+        root.next = new ListNode(2);
+        root.next.next = new ListNode(0);
+        root.next.next.next = new ListNode(4);
         root.next.next.next.next = root.next;
         System.out.println("Cycle starts from: " + firstNode(root).data);
     }
