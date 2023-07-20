@@ -1,19 +1,11 @@
 package linked_list;
 
-class Node {
-    int data;
-    Node next;
-
-    Node(int data) {
-        this.data = data;
-        this.next = null;
-    }
-}
+import utils.ListNode;
 
 public class AddTwoNumbers {
-    public static Node addTwoNumbers(Node num1, Node num2) {
-        Node dummy = new Node(-1);
-        Node tail = dummy;
+    public static ListNode addTwoNumbers(ListNode num1, ListNode num2) {
+        ListNode dummy = new ListNode(-1);
+        ListNode tail = dummy;
         int carry = 0;
         while (num1 != null || num2 != null || carry == 1) {
             int sum = 0;
@@ -27,14 +19,14 @@ public class AddTwoNumbers {
             }
             sum += carry;
             carry = sum / 10;
-            tail.next = new Node(sum % 10);
+            tail.next = new ListNode(sum % 10);
             tail = tail.next;
         }
         return dummy.next;
     }
 
-    public static void print(Node head) {
-        Node curr = head;
+    public static void print(ListNode head) {
+        ListNode curr = head;
         while (curr != null) {
             System.out.print(curr.data + " ");
             curr = curr.next;
@@ -42,16 +34,16 @@ public class AddTwoNumbers {
     }
 
     public static void main(String[] args) {
-        Node num1 = new Node(9);
-        num1.next = new Node(9);
-        num1.next.next = new Node(9);
-        num1.next.next.next = new Node(9);
-        num1.next.next.next.next = new Node(9);
-        Node num2 = new Node(9);
-        num2.next = new Node(9);
-        num2.next.next = new Node(9);
-        num2.next.next.next = new Node(9);
-        Node result = addTwoNumbers(num1, num2);
+        ListNode num1 = new ListNode(9);
+        num1.next = new ListNode(9);
+        num1.next.next = new ListNode(9);
+        num1.next.next.next = new ListNode(9);
+        num1.next.next.next.next = new ListNode(9);
+        ListNode num2 = new ListNode(9);
+        num2.next = new ListNode(9);
+        num2.next.next = new ListNode(9);
+        num2.next.next.next = new ListNode(9);
+        ListNode result = addTwoNumbers(num1, num2);
         print(result);
     }
 }

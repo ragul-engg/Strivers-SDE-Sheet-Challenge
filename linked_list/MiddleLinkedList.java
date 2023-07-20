@@ -1,21 +1,13 @@
 package linked_list;
 
-class Node {
-    int data;
-    Node next;
-
-    Node(int data) {
-        this.data = data;
-        this.next = null;
-    }
-}
+import utils.ListNode;
 
 public class MiddleLinkedList {
-    static Node head;
+    static ListNode head;
 
-    public static Node middleElement(Node head) {
-        Node slow = head;
-        Node fast = head;
+    public static ListNode middleElement(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
         while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
@@ -25,13 +17,13 @@ public class MiddleLinkedList {
 
     public static void insert(int data) {
         if (head == null) {
-            head = new Node(data);
+            head = new ListNode(data);
         } else {
-            Node curr = head;
+            ListNode curr = head;
             while (curr.next != null) {
                 curr = curr.next;
             }
-            curr.next = new Node(data);
+            curr.next = new ListNode(data);
         }
     }
 

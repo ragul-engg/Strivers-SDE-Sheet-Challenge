@@ -1,17 +1,9 @@
 package linked_list;
 
-class Node {
-    int data;
-    Node next;
-
-    Node(int data) {
-        this.data = data;
-        this.next = null;
-    }
-}
+import utils.ListNode;
 
 public class ReverseLinkedList {
-    Node head;
+    ListNode head;
 
     ReverseLinkedList() {
         this.head = null;
@@ -19,20 +11,20 @@ public class ReverseLinkedList {
 
     public void insert(int data) {
         if (this.head == null) {
-            head = new Node(data);
+            head = new ListNode(data);
         } else {
-            Node curr = head;
+            ListNode curr = head;
             while (curr.next != null) {
                 curr = curr.next;
             }
-            curr.next = new Node(data);
+            curr.next = new ListNode(data);
         }
     }
 
     public void reverse() {
-        Node prev = null;
-        Node curr = head;
-        Node next = null;
+        ListNode prev = null;
+        ListNode curr = head;
+        ListNode next = null;
         while (curr != null) {
             next = curr.next;
             curr.next = prev;
@@ -43,7 +35,7 @@ public class ReverseLinkedList {
     }
 
     public void print() {
-        Node curr = head;
+        ListNode curr = head;
         while (curr != null) {
             System.out.print(curr.data + " ");
             curr = curr.next;

@@ -1,31 +1,20 @@
 package linked_list;
 
-class Node {
-    int data;
-    Node next;
-
-    Node() {
-    }
-
-    Node(int data) {
-        this.data = data;
-        this.next = null;
-    }
-}
+import utils.ListNode;
 
 public class MergeSortedLinkedList {
 
-    public static void print(Node head) {
-        Node curr = head;
+    public static void print(ListNode head) {
+        ListNode curr = head;
         while (curr != null) {
             System.out.print(curr.data + " ");
             curr = curr.next;
         }
     }
 
-    public static Node mergeTwoLists(Node list1, Node list2) {
-        Node dummy = new Node(-1);
-        Node tail = dummy;
+    public static ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        ListNode dummy = new ListNode(-1);
+        ListNode tail = dummy;
         while (list1 != null && list2 != null) {
             if (list1.data <= list2.data) {
                 tail.next = list1;

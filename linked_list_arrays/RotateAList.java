@@ -1,33 +1,26 @@
-class Node {
-    int data;
-    Node next;
 
-    Node(int data) {
-        this.data = data;
-        this.next = null;
-    }
-}
+import utils.ListNode;
 
 public class RotateAList {
-    static Node head;
+    static ListNode head;
 
     public static void insert(int data) {
         if (head == null) {
-            head = new Node(data);
+            head = new ListNode(data);
         } else {
-            Node curr = head;
+            ListNode curr = head;
             while (curr.next != null) {
                 curr = curr.next;
             }
-            curr.next = new Node(data);
+            curr.next = new ListNode(data);
         }
     }
 
-    public static Node rotate(Node head, int k) {
+    public static ListNode rotate(ListNode head, int k) {
         if (head == null || head.next == null || k == 0) {
             return head;
         }
-        Node curr = head;
+        ListNode curr = head;
         int len = 1;
         while (curr.next != null) {
             curr = curr.next;
@@ -40,13 +33,13 @@ public class RotateAList {
             curr = curr.next;
             end--;
         }
-        Node newHead = curr.next;
+        ListNode newHead = curr.next;
         curr.next = null;
         return newHead;
     }
 
     public static void print() {
-        Node curr = head;
+        ListNode curr = head;
         while (curr != null) {
             System.out.print(curr.data + " ");
             curr = curr.next;

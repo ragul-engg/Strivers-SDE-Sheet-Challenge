@@ -1,33 +1,25 @@
 package linked_list;
 
-class Node {
-    int data;
-    Node next;
-
-    Node(int data) {
-        this.data = data;
-        this.next = null;
-    }
-}
+import utils.ListNode;
 
 public class RemoveNthNodeFromBack {
-    static Node head;
+    static ListNode head;
 
     public static void insert(int data) {
         if (head == null) {
-            head = new Node(data);
+            head = new ListNode(data);
         } else {
-            Node curr = head;
+            ListNode curr = head;
             while (curr.next != null) {
                 curr = curr.next;
             }
-            curr.next = new Node(data);
+            curr.next = new ListNode(data);
         }
     }
 
-    public static Node removeKthNode(Node head, int K) {
-        Node fast = head;
-        Node slow = head;
+    public static ListNode removeKthNode(ListNode head, int K) {
+        ListNode fast = head;
+        ListNode slow = head;
         for (int i = 0; i < K; i++) {
             fast = fast.next;
         }
@@ -43,8 +35,8 @@ public class RemoveNthNodeFromBack {
         return head;
     }
 
-    public static void print(Node head) {
-        Node curr = head;
+    public static void print(ListNode head) {
+        ListNode curr = head;
         while (curr != null) {
             System.out.print(curr.data + " ");
             curr = curr.next;
