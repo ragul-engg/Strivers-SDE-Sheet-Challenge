@@ -4,10 +4,11 @@ public class TreeNode {
     public int data;
     public TreeNode left;
     public TreeNode right;
+    public TreeNode next;
 
     public TreeNode(int d) {
         data = d;
-        left = right = null;
+        left = right = next = null;
     }
 
     public static TreeNode insert(int[] arr, int n, int i) {
