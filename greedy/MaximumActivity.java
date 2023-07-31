@@ -1,28 +1,21 @@
+package greedy;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
-class Pair {
-    int start;
-    int end;
-    int pos;
-
-    Pair(int s, int e) {
-        start = s;
-        end = e;
-    }
-}
+import utils.IntervalPair;
 
 public class MaximumActivity {
 
     public static int maximumActivities(List<Integer> start, List<Integer> end) {
         int n = start.size();
-        List<Pair> pairs = new ArrayList<>();
+        List<IntervalPair> pairs = new ArrayList<>();
         for (int i = 0; i < n; i++) {
-            pairs.add(new Pair(start.get(i), end.get(i)));
+            pairs.add(new IntervalPair(start.get(i), end.get(i)));
         }
-        Comparator<Pair> comp = (a, b) -> a.end - b.end;
+        Comparator<IntervalPair> comp = (a, b) -> a.end - b.end;
         pairs.sort(comp);
         int limit = pairs.get(0).end;
         int maxAct = 1;

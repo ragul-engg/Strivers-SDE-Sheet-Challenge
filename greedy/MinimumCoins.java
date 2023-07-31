@@ -1,3 +1,5 @@
+package greedy;
+
 public class MinimumCoins {
 
     public static int findMinimumCoins(int amount) {

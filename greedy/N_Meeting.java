@@ -1,32 +1,20 @@
+package greedy;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-class Pair {
-    int pos;
-    int start;
-    int end;
-
-    Pair(int pos, int start, int end) {
-        this.pos = pos;
-        this.start = start;
-        this.end = end;
-    }
-
-    public String toString() {
-        return String.format("(%d-%d-%d)", pos, start, end);
-    }
-}
+import utils.IntervalPair;
 
 public class N_Meeting {
 
     public static List<Integer> maximumMeetings(int[] start, int[] end) {
         int n = start.length;
-        List<Pair> timing = new ArrayList<>();
+        List<IntervalPair> timing = new ArrayList<>();
         for (int i = 0; i < n; i++) {
-            timing.add(new Pair(i + 1, start[i], end[i]));
+            timing.add(new IntervalPair(i + 1, start[i], end[i]));
         }
-        Comparator<Pair> comp = (a, b) -> a.end - b.end;
+        Comparator<IntervalPair> comp = (a, b) -> a.end - b.end;
         comp = comp.thenComparing((a, b) -> a.pos - b.pos);
         timing.sort(comp);
         List<Integer> result = new ArrayList<>();

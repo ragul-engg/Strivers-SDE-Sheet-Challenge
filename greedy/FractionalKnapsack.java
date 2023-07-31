@@ -1,27 +1,12 @@
-import java.util.*;
+package greedy;
 
-class Pair {
-    int value;
-    int weight;
+import java.util.Arrays;
 
-    Pair(int w, int v) {
-        weight = w;
-        value = v;
-    }
-}
+import utils.KnapsackPair;
 
 public class FractionalKnapsack {
-    public static double maximumValue(Pair[] items, int n, int w) {
-        // Write your code here.
-        // ITEMS contains {weight, value} pairs.
-        Arrays.sort(items, new Comparator<Pair>() {
-            @Override
-            public int compare(Pair a, Pair b) {
-                double r1 = (double) a.value / (double) a.weight;
-                double r2 = (double) b.value / (double) b.weight;
-                return Double.compare(r2, r1);
-            }
-        });
+    public static double maximumValue(KnapsackPair[] items, int n, int w) {
+        Arrays.sort(items, (a, b) -> Double.compare((double) b.value / b.weight, (double) a.value / a.weight));
 
         double totalValue = 0;
         int totalWeight = 0;
@@ -39,13 +24,13 @@ public class FractionalKnapsack {
     }
 
     public static void main(String[] args) {
-        Pair[] pairs = new Pair[6];
-        pairs[0] = new Pair(50, 40);
-        pairs[1] = new Pair(40, 50);
-        pairs[2] = new Pair(90, 25);
-        pairs[3] = new Pair(120, 100);
-        pairs[4] = new Pair(10, 30);
-        pairs[5] = new Pair(200, 45);
+        KnapsackPair[] pairs = new KnapsackPair[6];
+        pairs[0] = new KnapsackPair(50, 40);
+        pairs[1] = new KnapsackPair(40, 50);
+        pairs[2] = new KnapsackPair(90, 25);
+        pairs[3] = new KnapsackPair(120, 100);
+        pairs[4] = new KnapsackPair(10, 30);
+        pairs[5] = new KnapsackPair(200, 45);
         System.out.println(maximumValue(pairs, pairs.length, 200));
     }
 }
